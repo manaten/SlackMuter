@@ -1,0 +1,38 @@
+{
+  "name": "SlackMuter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/manaten/SlackMuter.git",
+  "author": "manaten <manaten@manaten.net> (http://manaten.net/)",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "run-s build start:js",
+    "start:js": "forever --minUptime=1000ms --spinSleepTime=1000ms lib/index.js"
+  },
+  "dependencies": {
+    "@slack/client": "4.8.0",
+    "axios": "0.18.0",
+    "forever": "0.15.3"
+  },
+  "devDependencies": {
+    "@manaten/frontend-dev-tools": "1.1.0",
+    "@types/node": "10.12.12",
+    "typescript": "3.2.2",
+    "typescript-eslint-parser": "21.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged -c ./node_modules/@manaten/frontend-dev-tools/.lintstagedrc"
+    }
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/@manaten/frontend-dev-tools/.eslintrc",
+    "parser": "typescript-eslint-parser",
+    "rules": {
+      "no-undef": 0,
+      "no-unused-vars": 0,
+      "compat/compat": 0
+    }
+  }
+}
