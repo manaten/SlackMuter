@@ -6,6 +6,8 @@
   "author": "manaten <manaten@manaten.net> (http://manaten.net/)",
   "license": "MIT",
   "scripts": {
+    "deploy": "run-s build deploy:dokku",
+    "deploy:dokku": "gh-pages -d . -s './{Procfile,CHECKS,*.json,lib/**/*}' -b master -o dokku",
     "build": "tsc",
     "start": "run-s build start:js",
     "start:js": "forever --minUptime=1000ms --spinSleepTime=1000ms lib/index.js"
@@ -18,6 +20,7 @@
   "devDependencies": {
     "@manaten/frontend-dev-tools": "1.1.0",
     "@types/node": "10.12.12",
+    "gh-pages": "2.0.1",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "21.0.2"
   },
