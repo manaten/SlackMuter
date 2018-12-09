@@ -9,8 +9,8 @@
     "deploy": "run-s build deploy:dokku",
     "deploy:dokku": "gh-pages -d . -s './{Procfile,CHECKS,*.json,lib/**/*}' -b master -o dokku",
     "build": "tsc",
-    "start": "run-s build start:js",
-    "start:js": "forever --minUptime=1000ms --spinSleepTime=1000ms lib/index.js"
+    "debug": "run-s build start",
+    "start": "forever --minUptime=1000ms --spinSleepTime=1000ms lib/index.js"
   },
   "dependencies": {
     "@slack/client": "4.8.0",
